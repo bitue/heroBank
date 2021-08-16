@@ -3,6 +3,25 @@ let btnwithdraw = document.getElementById("withdraw-btn")
 let btndeposit = document.getElementById("deposit-btn")
 
 //add event withdraw 
+function updateBalance(balance , Value, res){
+    if(res==false){
+        balance = balance - Value
+        document.getElementById("balance").innerText = balance
+    
+        document.getElementById("withdraw").value = ""
+
+    }
+    else{
+        balance = balance + Value
+        document.getElementById("balance").innerText = balance
+    
+        //clear the input field
+        document.getElementById("deposit").value = ""
+
+    }
+  
+}
+
 function inputToValue(inputId){
     let value = document.getElementById(inputId).value
     //need to parseFloat this value 
@@ -27,7 +46,7 @@ function textToValue(textId ){
     let grabID = document.getElementById(textId)
     let current = grabID.innerText
     current = parseFloat(current)
-    return current
+    return current 
 
 }
 
@@ -36,6 +55,7 @@ btndeposit.addEventListener("click", function () {
     // let depositValue = document.getElementById("deposit").value
     //need to parseFloat this value 
     depositValue = inputToValue("deposit")
+   
     //add some breakpoints 
     if (isNaN(depositValue)) {
         document.getElementById("deposit").value = ""
@@ -58,18 +78,23 @@ btndeposit.addEventListener("click", function () {
     //     return 
     // }
    
-    depositValue = depositValue + currentDepositValue
+  let   newDepositValue = depositValue + currentDepositValue
+    debugger ;
     //set the value by innerText
 
-    document.getElementById("deposit-amount").innerText = depositValue
+    document.getElementById("deposit-amount").innerText = newDepositValue
     //update the balance amount 
     let balance = document.getElementById("balance").innerText
     balance = parseFloat(balance)
-    balance = balance + depositValue
-    document.getElementById("balance").innerText = balance
+   
 
-    //clear the input field
-    document.getElementById("deposit").value = ""
+    updateBalance(balance ,depositValue,true)
+
+    // balance = balance + depositValue
+    // document.getElementById("balance").innerText = balance
+
+    // //clear the input field
+    // document.getElementById("deposit").value = ""
 
 })
 
@@ -109,11 +134,12 @@ btnwithdraw.addEventListener("click", function () {
     currentWithdraw = currentWithdraw + withdrawValue
     document.getElementById("withdraw-amount").innerText = currentWithdraw
 
+    updateBalance(balance , withdrawValue,  false)
     
-    balance = balance - withdrawValue
-    document.getElementById("balance").innerText = balance
+    // balance = balance - withdrawValue
+    // document.getElementById("balance").innerText = balance
 
-    document.getElementById("withdraw").value = ""
+    // document.getElementById("withdraw").value = ""
 })
 
 
