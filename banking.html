@@ -7,6 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Banking Area</title>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        tbody:nth-child(2n){
+            background: gray; 
+        }
+    </style>
 </head>
 
 <body>
@@ -47,6 +52,19 @@
                         class="bg-red-400 hover:bg-red-500 font-bold  px-2 py-3 rounded-lg">Withdraw</button>
                 </div>
             </div>
+        </div>
+    </section>
+    <section class="mt-10  mx-auto rounded  ">
+        <div>
+            <table id="table" class="w-10/12  bg-gray-200 mx-auto rounded-3xl">
+                <thead class="text-center">
+                    <th class="px-5 py-2">Transection Type</th>
+                    <th class="px-5 py-2">Amount</th>
+                    <th class="px-5 py-2">Updated Balance</th>
+                   
+                </thead>
+               
+            </table>
         </div>
     </section>
     <script src="bank.js"></script>

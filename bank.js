@@ -37,8 +37,23 @@ btndeposit.addEventListener("click", function () {
     balance = balance + depositValue
     document.getElementById("balance").innerText = balance
 
+          // added tabble
+          let tabble = document.getElementById("table")
+          let tbody = document.createElement("tbody")
+          tbody.innerHTML = `
+          <tbody >
+              <th class="px-5 py-2">Deposit</th>
+              <th class="px-5 py-2">${depositValue}</th>
+              <th class="px-5 py-2">${balance}</th>
+          </tbody>
+          
+          `
+          tabble.appendChild(tbody)
+
     //clear the input field
     document.getElementById("deposit").value = ""
+
+ 
 
 })
 
@@ -57,7 +72,7 @@ btnwithdraw.addEventListener("click", function () {
         document.getElementById("withdraw").value = ""
         return alert("please enter correct amount")
     }
-    if(withdrawValue>balance){
+    if (withdrawValue > balance) {
         document.getElementById("withdraw").value = ""
         return alert("you can not withdraw this amount")
 
@@ -71,11 +86,26 @@ btnwithdraw.addEventListener("click", function () {
     currentWithdraw = currentWithdraw + withdrawValue
     setwithdraw.innerText = currentWithdraw
 
-  
+
     balance = balance - withdrawValue
     document.getElementById("balance").innerText = balance
 
+      // added tabble
+      let tabble = document.getElementById("table")
+      let tbody = document.createElement("tbody")
+      tbody.innerHTML = `
+      <tbody >
+          <th class="px-5 py-2">withdraw</th>
+          <th class="px-5 py-2">${currentWithdraw}</th>
+          <th class="px-5 py-2">${balance}</th>
+      </tbody>
+      
+      `
+      tabble.appendChild(tbody)
+
     document.getElementById("withdraw").value = ""
+
+  
 })
 
 
