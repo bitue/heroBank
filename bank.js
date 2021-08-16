@@ -7,23 +7,23 @@ function inputToValue(inputId){
     let value = document.getElementById(inputId).value
     //need to parseFloat this value 
     value = parseFloat(value)
-    if (isNaN(value)) {
-        document.getElementById(inputId).value = ""
-         alert("please Enter correct amount")
-         return false
-    }
-    if (value < 0) {
-        document.getElementById(inputId).value = ""
-         alert("please enter correct amount")
-         return false
-    }
+    // if (isNaN(value)) {
+    //     document.getElementById(inputId).value = ""
+    //      alert("please Enter correct amount")
+    //      return false
+    // }
+    // if (value < 0) {
+    //     document.getElementById(inputId).value = ""
+    //      alert("please enter correct amount")
+    //      return false
+    // }
     return value
 
 }
-function textToValue(textId ,result){
-    if(result==false){
-        return alert("enter the correct amount")
-    }
+function textToValue(textId ){
+    // if(result==false){
+    //     return alert("enter the correct amount")
+    // }
     let grabID = document.getElementById(textId)
     let current = grabID.innerText
     current = parseFloat(current)
@@ -37,14 +37,14 @@ btndeposit.addEventListener("click", function () {
     //need to parseFloat this value 
     depositValue = inputToValue("deposit")
     //add some breakpoints 
-    // if (isNaN(depositValue)) {
-    //     document.getElementById("deposit").value = ""
-    //     return alert("please Enter correct amount")
-    // }
-    // if (depositValue < 0) {
-    //     document.getElementById("deposit").value = ""
-    //     return alert("please enter correct amount")
-    // }
+    if (isNaN(depositValue)) {
+        document.getElementById("deposit").value = ""
+        return alert("please Enter correct amount")
+    }
+    if (depositValue < 0) {
+        document.getElementById("deposit").value = ""
+        return alert("please enter correct amount")
+    }
 
     //grab the deposit amount show span tag
     // let currentDeposit = document.getElementById("deposit-amount")
@@ -53,10 +53,10 @@ btndeposit.addEventListener("click", function () {
     //need to parseFloat this value
     // currentDepositValue = parseFloat(currentDepositValue)
     //new deposit value = prev deposit value + current deposit value 
-    currentDepositValue = textToValue("deposit-amount",depositValue)
-    if(currentDepositValue==undefined){
-        return 
-    }
+    currentDepositValue = textToValue("deposit-amount")
+    // if(currentDepositValue==undefined){
+    //     return 
+    // }
    
     depositValue = depositValue + currentDepositValue
     //set the value by innerText
@@ -80,14 +80,14 @@ btnwithdraw.addEventListener("click", function () {
     //need to get the current balance
     let balance = document.getElementById("balance").innerText
     balance = parseFloat(balance)
-    // if (isNaN(withdrawValue)) {
-    //     document.getElementById("withdraw").value = ""
-    //     return alert("please Enter correct amount")
-    // }
-    // if (withdrawValue < 0) {
-    //     document.getElementById("withdraw").value = ""
-    //     return alert("please enter correct amount")
-    // }
+    if (isNaN(withdrawValue)) {
+        document.getElementById("withdraw").value = ""
+        return alert("please Enter correct amount")
+    }
+    if (withdrawValue < 0) {
+        document.getElementById("withdraw").value = ""
+        return alert("please enter correct amount")
+    }
     if(withdrawValue>balance){
         document.getElementById("withdraw").value = ""
         return alert("you can not withdraw this amount")
@@ -99,11 +99,11 @@ btnwithdraw.addEventListener("click", function () {
     // let currentWithdraw = setwithdraw.innerText
     // currentWithdraw = parseFloat(currentWithdraw)
    
-    currentWithdraw = textToValue("withdraw-amount" , withdrawValue)
+    currentWithdraw = textToValue("withdraw-amount" )
     
-    if(currentWithdraw==undefined){
-        return 
-    }
+    // if(currentWithdraw==undefined){
+    //     return 
+    // }
    
 
     currentWithdraw = currentWithdraw + withdrawValue
