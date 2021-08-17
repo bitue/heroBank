@@ -27,10 +27,10 @@ btndeposit.addEventListener("click", function () {
     currentDepositValue = parseFloat(currentDepositValue)
     //new deposit value = prev deposit value + current deposit value 
 
-    depositValue = depositValue + currentDepositValue
+   let  newdepositValue = depositValue + currentDepositValue
     //set the value by innerText
 
-    currentDeposit.innerText = depositValue
+    currentDeposit.innerText = newdepositValue
     //update the balance amount 
     let balance = document.getElementById("balance").innerText
     balance = parseFloat(balance)
